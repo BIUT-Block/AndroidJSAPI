@@ -21,6 +21,12 @@ public class SECBlockJavascriptAPI {
         jsContext.evaluateScript(secSDKJSCode);
     }
 
+    public String PrivKeytoAddress(String privKey) {
+        jsContext.evaluateScript("var Address = SECSDK.privKeytoAddress(\"" + privKey + "\")");
+        final JSValue Address = jsContext.property("Address");
+        return Address.toString();
+    }
+
     public String EntropyToMnemonic(String privKey) {
         jsContext.evaluateScript("var Mnemonic = SECSDK.entropyToMnemonic(\"" + privKey + "\")");
         final JSValue Mnemonic = jsContext.property("Mnemonic");

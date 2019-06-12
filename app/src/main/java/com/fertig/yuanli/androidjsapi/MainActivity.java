@@ -17,12 +17,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final TextView textView = findViewById(R.id.text);
+        final Button buttonAddress = findViewById(R.id.buttonAddress);
         final Button buttonMnemonic = findViewById(R.id.buttonMnemonic);
         final Button buttonPrivKey = findViewById(R.id.buttonPrivKey);
         final Button buttonTxsign = findViewById(R.id.buttonTxsign);
         final SECBlockJavascriptAPI api;
         try {
             api = new SECBlockJavascriptAPI(getApplicationContext());
+
+            buttonAddress.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String privKey = "bad50f54db86259e077749d2593cd0fc74550a9b303da02972a37a16a7d23819";
+                    textView.setText(api.PrivKeytoAddress(privKey));
+                }
+            });
 
             buttonMnemonic.setOnClickListener(new View.OnClickListener() {
                 @Override

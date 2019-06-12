@@ -53,4 +53,16 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:text="Mnemonic to Privatekey" />
+
+    <Button
+        android:id="@+id/buttonAddress"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonPrivKey"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="PrivateKey to Address" />
 </RelativeLayout>
