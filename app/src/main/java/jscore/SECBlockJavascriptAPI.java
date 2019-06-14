@@ -21,6 +21,19 @@ public class SECBlockJavascriptAPI {
         jsContext.evaluateScript(secSDKJSCode);
     }
 
+    public String encryptKeystore(String keystoreString, String password) {
+        Log.d("Test Info", keystoreString);
+        jsContext.evaluateScript("var KeyString = SECSDK.encryptKeystore(\'" + keystoreString + "\', \"" + password + "\")");
+        final JSValue KeyString = jsContext.property("KeyString");
+        return KeyString.toString();
+    }
+
+    public String decryptKeystore(String cryptedString, String password) {
+        jsContext.evaluateScript("var KeyData = SECSDK.decryptKeystore(\"" + cryptedString + "\", \"" + password + "\")");
+        final JSValue KeyData = jsContext.property("KeyData");
+        return KeyData.toString();
+    }
+
     public String PrivKeytoAddress(String privKey) {
         jsContext.evaluateScript("var Address = SECSDK.privKeytoAddress(\"" + privKey + "\")");
         final JSValue Address = jsContext.property("Address");
