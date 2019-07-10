@@ -3,6 +3,8 @@ package jscore;
 import android.content.Context;
 import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.liquidplayer.javascript.JSContext;
 import org.liquidplayer.javascript.JSValue;
 
@@ -31,7 +33,13 @@ public class SECBlockJavascriptAPI {
     public String decryptKeystore(String cryptedString, String password) {
         jsContext.evaluateScript("var KeyData = SECSDK.decryptKeystore(\"" + cryptedString + "\", \"" + password + "\")");
         final JSValue KeyData = jsContext.property("KeyData");
-        return KeyData.toString();
+        try {
+            JSONObject obj = new JSONObject(KeyData.toString());
+            return obj.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return e.toString();
+        }
     }
 
     public String PrivKeytoAddress(String privKey) {
