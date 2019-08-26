@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         final Button buttonAddress = findViewById(R.id.buttonAddress);
         final Button buttonMnemonic = findViewById(R.id.buttonMnemonic);
         final Button buttonPrivKey = findViewById(R.id.buttonPrivKey);
-        final Button buttonTxsign = findViewById(R.id.buttonTxsign);
+        final Button buttonBiutTxsign = findViewById(R.id.buttonBiutTxsign);
+        final Button buttonBiuTxsign = findViewById(R.id.buttonBiuTxsign);
         final SECBlockJavascriptAPI api;
         try {
             api = new SECBlockJavascriptAPI(getApplicationContext());
@@ -67,11 +68,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            buttonTxsign.setOnClickListener(new View.OnClickListener() {
+            buttonBiuTxsign.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String Tx = "{\"privateKey\":\"bad50f54db86259e077749d2593cd0fc74550a9b303da02972a37a16a7d23819\",\"from\":\"0858768edb7c24b329efd1133888c2e1d0c23e76\",\"to\":\"04d7e0cd097bf5da8a6ac64b333d606639ffd7e8\",\"value\":\"3\",\"inputData\":\"Test\"}";
-                    textView.setText(api.TxSign(Tx));
+                    String Tx = "{\"privateKey\":\"bad50f54db86259e077749d2593cd0fc74550a9b303da02972a37a16a7d23819\",\"from\":\"0858768edb7c24b329efd1133888c2e1d0c23e76\",\"to\":\"04d7e0cd097bf5da8a6ac64b333d606639ffd7e8\",\"value\":\"3\",\"inputData\":\"Test\",\"nonce\":\"0\"}";
+                    textView.setText(api.biuTxSign(Tx));
+                }
+            });
+
+            buttonBiutTxsign.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String Tx = "{\"privateKey\":\"bad50f54db86259e077749d2593cd0fc74550a9b303da02972a37a16a7d23819\",\"from\":\"0858768edb7c24b329efd1133888c2e1d0c23e76\",\"to\":\"04d7e0cd097bf5da8a6ac64b333d606639ffd7e8\",\"value\":\"3\",\"inputData\":\"Test\",\"nonce\":\"0\"}";
+                    textView.setText(api.biutTxSign(Tx));
                 }
             });
         } catch (IOException e) {

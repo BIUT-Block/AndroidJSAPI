@@ -60,8 +60,14 @@ public class SECBlockJavascriptAPI {
         return PrivKey.toString();
     }
 
-    public String TxSign(String _Tx) {
-        jsContext.evaluateScript("var Tx = SECSDK.txSign(\'" + _Tx + "\')");
+    public String biuTxSign(String _Tx) {
+        jsContext.evaluateScript("var Tx = SECSDK.biuTxSign(\'" + _Tx + "\')");
+        final JSValue Tx = jsContext.property("Tx");
+        return Tx.toString();
+    }
+
+    public String biutTxSign(String _Tx) {
+        jsContext.evaluateScript("var Tx = SECSDK.biutTxSign(\'" + _Tx + "\')");
         final JSValue Tx = jsContext.property("Tx");
         return Tx.toString();
     }
